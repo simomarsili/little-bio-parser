@@ -1,0 +1,16 @@
+*~
+*#
+*.pyc
+.cache
+.pytest_cache
+.tox
+*egg-info
+venv
+vnv
+TODO
+MANIFEST
+tests
+tests/*
+!tests/test_template.py
+build/*
+dist/*
