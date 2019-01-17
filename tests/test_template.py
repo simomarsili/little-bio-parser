@@ -13,3 +13,13 @@ def tests_dir():
 
 def test_0():
     assert 1 == 1
+
+
+def test_fasta():
+    import os
+    import gopen
+    from lilp.bioparsers import fasta_parser
+    fname = os.path.join(tests_dir(), '1.fa')
+    with gopen.gopen(fname) as f:
+        a = list(fasta_parser(f))
+    assert repr(a) == "[('1', '-AAA'), ('2', 'B-BB'), ('3', 'CC-C'), ('4', 'DDD-')]"
