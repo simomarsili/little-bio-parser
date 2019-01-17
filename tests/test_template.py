@@ -31,6 +31,6 @@ def test_stockholm():
     import os
     from gopen import gread
     from lilp.bioparsers import stockholm_parser as parser
-    fname = os.path.join(tests_dir(), '2.sto')
+    fname = os.path.join(tests_dir(), '1.sto')
     a = [record for record in parser(gread(fname))]
     assert repr(a) == RECORDS
