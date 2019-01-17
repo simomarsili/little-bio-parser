@@ -4,8 +4,7 @@ from setuptools import setup
 # from setuptools import find_packages
 
 NAME = 'project_name'
-PACKAGES = ['package1', 'package1/package2']
-MODULES = ['module1', ]
+PACKAGES = ['lilp']
 VERSION_FILE = 'version.json'
 SETUP_REQUIRES = []
 INSTALL_REQUIRES = []
@@ -43,7 +42,6 @@ setup(
     author='Simone Marsili',
     author_email='simo.marsili@gmail.com',
     url='https://github.com/simomarsili/'+NAME,
-    py_modules=MODULES,
     packages=PACKAGES,
     # packages=find_packages(exclude=['tests']),
     package_data={'':
