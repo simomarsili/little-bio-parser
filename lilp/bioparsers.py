@@ -51,14 +51,16 @@ def bioparser(parsers, fmt=None):
             fmt1 = parser_func.__name__
 
         def decorated_parser(source):
-            """Return a "fresh" sequence records generator.
-
-            Reset stream position on `source` to 0.
-            """
-            source.seek(0)
-
-            for name, seq in parser_func(source):
-                yield name, seq
+            import collections
+            import gopen
+            """Handle iterables, file-like and compressed files."""
+            if isinstance(source, collections.Iterable):
+                for name, seq in parser_func(source):
+                    yield name, seq
+            else:
+                with gopen.gopen(source) as f:
+                    for name, seq in parser_func(f):
+                        yield name, seq
 
         parsers[fmt1] = decorated_parser
 
@@ -91,15 +93,21 @@ def fasta_parser(fileo):
     # Skip any text before the first record (e.g. blank lines, comments)
     # TODO: add a maximum number of lines for the initial comment
 
+    fileo = iter(fileo)
+
     # skip blank lines (only) till a record is found
     while True:
-        line = fileo.readline()
-        if line == '':
-            return  # Premature end of file, or just empty?
-        elif line[0] == '>':
-            break
-        elif line[0] != ';':
-            raise ValueError("Not Fasta format")
+        try:
+            line = next(fileo)
+        except StopIteration:
+            return
+        else:
+            if line == '':
+                return  # Premature end of file, or just empty?
+            elif line[0] == '>':
+                break
+            elif line[0] != ';':
+                raise ValueError("Not Fasta format")
 
     while True:
         if line[0] != '>':
@@ -107,14 +115,14 @@ def fasta_parser(fileo):
                 'Records in Fasta files should start with ">" character')
         title = line[1:].rstrip()
         lines = []
-        line = fileo.readline()
+        line = next(fileo)
         while True:
             if not line:
                 break
             if line[0] == '>':
                 break
             lines.append(line.rstrip())
-            line = fileo.readline()
+            line = next(fileo)
 
         # Remove trailing whitespace, and any internal spaces
         # (and any embedded \r which are possible in mangled files
