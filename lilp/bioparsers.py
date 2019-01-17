@@ -97,17 +97,13 @@ def fasta_parser(fileo):
 
     # skip blank lines (only) till a record is found
     while True:
-        try:
-            line = next(fileo)
-        except StopIteration:
-            return
-        else:
-            if line == '':
-                return  # Premature end of file, or just empty?
-            elif line[0] == '>':
-                break
-            elif line[0] != ';':
-                raise ValueError("Not Fasta format")
+        line = next(fileo)
+        if line == '':
+            return  # Premature end of file, or just empty?
+        elif line[0] == '>':
+            break
+        elif line[0] != ';':
+            raise ValueError("Not Fasta format")
 
     while True:
         if line[0] != '>':
