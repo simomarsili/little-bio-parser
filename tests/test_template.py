@@ -1,3 +1,6 @@
+RECORDS = "[('VP54_CPSVP/90-227', '........LGTLKSITDKLRKLGGESSQPFIQFYKVQCMYIPLFSRVDGDNG......EITVSLIDDGKEAAGQDPIIQSITFDASQMAMVELSMNFFVEKKDMDFIGIHVSAENVPVQDRAYGSINLAFFTNEQSVPMMQEEKKSSYLMID..'), ('Q6E6Y4_9VIRU/93-231', 'ttkvkitt-------MDKVTSLIKFEKFPFYRVDRLKILYIPLFSGENSEGK......NITFSIQDRSMVVAGKPKKISSATAPINKMSMIELSATYFVQSKDLSKIEFGYKAKGIPVSGRSFAAVYLAFYIHGDHFPATMRPKDPIVLLID..'), ('A0A075IE34_9VIRU/105-247', '.iatmgrv-------VNLFKKATG-NEMPFVKFEKVQVMYIPLFQKTNEEDDpdkkipSMTVALVDKGQEEAGGDGIIQSITFRADEMALMELSMNFFVTRKDIEKIVVDACVDEIPVEGRAYGAMTIAFFVHEDYVPLRTELKPSTLMY--it')]"
+
+
 def tests_dir():
     """Return None is no tests dir."""
     import os
@@ -18,7 +21,16 @@ def test_0():
 def test_fasta():
     import os
     from gopen import gread
-    from lilp.bioparsers import fasta_parser
+    from lilp.bioparsers import fasta_parser as parser
     fname = os.path.join(tests_dir(), '1.fa')
-    a = [record for record in fasta_parser(gread(fname))]
-    assert repr(a) == "[('1', '-AAA'), ('2', 'B-BB'), ('3', 'CC-C'), ('4', 'DDD-')]"
+    a = [record for record in parser(gread(fname))]
+    assert repr(a) == RECORDS
+
+
+def test_stockholm():
+    import os
+    from gopen import gread
+    from lilp.bioparsers import stockholm_parser as parser
+    fname = os.path.join(tests_dir(), '2.sto')
+    a = [record for record in parser(gread(fname))]
+    assert repr(a) == RECORDS
