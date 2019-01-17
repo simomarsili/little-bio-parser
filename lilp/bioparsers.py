@@ -154,8 +154,10 @@ def stockholm_parser(fileo):
 
     """
 
+    # make sure that fileo is an iterator
+    fileo = iter(fileo)
     while True:
-        line = fileo.readline()
+        line = next(fileo)
         if not line:
             break  # end of file
         line = line.strip()  # remove trailing \n
