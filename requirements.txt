@@ -1,3 +1,1 @@
 -e git+git://github.com/simomarsili/gopen.git#egg=gopen
-# packageA
-# packageB
