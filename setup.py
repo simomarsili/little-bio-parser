@@ -3,11 +3,12 @@ from os import path
 from setuptools import setup
 # from setuptools import find_packages
 
-NAME = 'project_name'
+NAME = 'little-bio-parser'
 PACKAGES = ['lilp']
-VERSION_FILE = 'version.json'
+VERSION_FILE = 'lilp/version.json'
 SETUP_REQUIRES = []
-INSTALL_REQUIRES = []
+INSTALL_REQUIRES = [
+    'gopen @ http://github.com/simomarsili/gopen/tarball/master.tar.gz']
 EXTRAS_REQUIRES = {'test': ['pytest']}
 
 
