@@ -17,9 +17,8 @@ def test_0():
 
 def test_fasta():
     import os
-    import gopen
+    from gopen import gread
     from lilp.bioparsers import fasta_parser
     fname = os.path.join(tests_dir(), '1.fa')
-    lines = gopen.read(fname)
-    a = list(fasta_parser(lines))
+    a = [record for record in fasta_parser(gread(fname))]
     assert repr(a) == "[('1', '-AAA'), ('2', 'B-BB'), ('3', 'CC-C'), ('4', 'DDD-')]"
