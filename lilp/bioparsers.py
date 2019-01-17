@@ -93,8 +93,8 @@ def fasta_parser(fileo):
     # Skip any text before the first record (e.g. blank lines, comments)
     # TODO: add a maximum number of lines for the initial comment
 
+    # make sure that fileo is an iterator
     fileo = iter(fileo)
-
     # skip blank lines (only) till a record is found
     while True:
         line = next(fileo)
@@ -118,7 +118,11 @@ def fasta_parser(fileo):
             if line[0] == '>':
                 break
             lines.append(line.rstrip())
-            line = next(fileo)
+            try:
+                line = next(fileo)
+            except StopIteration:
+                line = False
+                break
 
         # Remove trailing whitespace, and any internal spaces
         # (and any embedded \r which are possible in mangled files
