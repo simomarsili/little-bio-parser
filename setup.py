@@ -8,7 +8,7 @@ PACKAGES = ['lilp']
 VERSION_FILE = 'lilp/version.json'
 SETUP_REQUIRES = []
 INSTALL_REQUIRES = [
-    'gopen @ http://github.com/simomarsili/gopen/archive/master.tar.gz']
+    'gopen @ http://github.com/simomarsili/gopen/archive/v0.3.1.tar.gz']
 EXTRAS_REQUIRES = {'test': ['pytest']}
 
 
