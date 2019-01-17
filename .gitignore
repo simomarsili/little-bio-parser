@@ -12,5 +12,7 @@ MANIFEST
 tests
 tests/*
 !tests/test_template.py
+!tests/1.fa
+!tests/1.sto
 build/*
 dist/*

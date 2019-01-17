@@ -1,0 +1,38 @@
+# STOCKHOLM 1.0
+#=GF ID   30K_MP_core
+#=GF AC   PF17644.1
+#=GF DE   Core domain of 30K viral movement proteins
+#=GF AU   El-Gebali S;0000-0003-1378-5495
+#=GF SE   Karlin D
+#=GF GA   25.00 25.00;
+#=GF TC   26.70 60.10;
+#=GF NC   20.30 17.50;
+#=GF BM   hmmbuild HMM.ann SEED.ann
+#=GF SM   hmmsearch -Z 45638612 -E 1000 --cpu 4 HMM pfamseq
+#=GF TP   Domain
+#=GF RN   [1]
+#=GF RM   27596536
+#=GF RT   Bioinformatic and mutational analysis of ophiovirus movement
+#=GF RT   proteins, belonging  to the 30K superfamily.
+#=GF RA   Borniego MB, Karlin D, Pena EJ, Robles Luna G, Garcia ML;
+#=GF RL   Virology. 2016;498:172-180.
+#=GF DR   SO; 0000417; polypeptide_domain;
+#=GF CC   This entry represents the core domain found in viral movement
+#=GF CC   proteins (MP) of the 30K type. The core domain is conserved
+#=GF CC   among MPs of 30K sharing the same predicted secondary structure
+#=GF CC   which consists of 1 alpha-helix and 7 predicted beta-strands.
+#=GF CC   The only sequence feature common to all 30K MPs is a short
+#=GF CC   region between beta-strands 1 and 2, which contains several
+#=GF CC   conserved hydrophobic positions, and a nearly-invariant
+#=GF CC   aspartate which constitutes the sequence signature of the
+#=GF CC   superfamily. This signature aspartate has a conserved role in
+#=GF CC   essential for viral cell-to-cell movement [1].
+#=GF SQ   3
+#=GS VP54_CPSVP/90-227         AC Q6DN65.1
+#=GS Q6E6Y4_9VIRU/93-231       AC Q6E6Y4.1
+#=GS A0A075IE34_9VIRU/105-247  AC A0A075IE34.1
+VP54_CPSVP/90-227                    ........LGTLKSITDKLRKLGGESSQPFIQFYKVQCMYIPLFSRVDGDNG......EITVSLIDDGKEAAGQDPIIQSITFDASQMAMVELSMNFFVEKKDMDFIGIHVSAENVPVQDRAYGSINLAFFTNEQSVPMMQEEKKSSYLMID..
+Q6E6Y4_9VIRU/93-231                  ttkvkitt-------MDKVTSLIKFEKFPFYRVDRLKILYIPLFSGENSEGK......NITFSIQDRSMVVAGKPKKISSATAPINKMSMIELSATYFVQSKDLSKIEFGYKAKGIPVSGRSFAAVYLAFYIHGDHFPATMRPKDPIVLLID..
+A0A075IE34_9VIRU/105-247             .iatmgrv-------VNLFKKATG-NEMPFVKFEKVQVMYIPLFQKTNEEDDpdkkipSMTVALVDKGQEEAGGDGIIQSITFRADEMALMELSMNFFVTRKDIEKIVVDACVDEIPVEGRAYGAMTIAFFVHEDYVPLRTELKPSTLMY--it
+#=GC seq_cons                        .htshhps.......sDKl+KLsG.schPFl+F-KVQlMYIPLFS+sNuEsc......sITVSLlD+GpEsAGpDsIIQSITFcAscMAMlELSMNFFVp+KDl-KIslcssA-sIPVpGRAYGAlsLAFFlHEDaVPhppE.KcSolLhID..
+//
