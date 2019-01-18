@@ -1,15 +1,21 @@
 =================
 little-bio-parser
 =================
-Minimal parser for files of biological alignments.
-Valid formats are: "fasta" and "stockholm".
+Minimal parser for files of biological alignments (fasta or stockholm formats).
 
-The parser simply iterates over the alignment returning each record as a tuple
-(index, title, seq):
-- the index in the original alignment
-- the title line
-- and the sequence (as a plain string)
+The parser returns a generator of the alignment records as
+(index, title, sequence) tuples, where:
+
+- index is the index in the original alignment
+- title is the header line
+- and sequence is the record sequence (as a plain string)
+
+Usage example::
+
+  >>> import lilbio
+  >>> parsed_records = lilbio.parse('alignment.fa', 'fasta')
+
 No record objects are created. No check on biological alphabet.
 
-Built over low level parsers from Biopython
+Built over modified low-level parsers from Biopython
 (SimpleFastaParser function and StockholmIterator class).
