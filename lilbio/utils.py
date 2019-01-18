@@ -59,39 +59,3 @@ def config_loggers():
         # level=logging.DEBUG)
     level=logging.DEBUG)
     # add_notes_handler()
-
-
-def add_loglevel_notes():
-    '''Add a loglevel "notes".'''
-    logging.NOTES = 25
-    logging.addLevelName(logging.NOTES, "NOTES")
-
-    def notes(self, message, *args, **kws):
-        if self.isEnabledFor(logging.NOTES):
-            self._log(logging.NOTES, message, args, **kws)
-
-    logging.Logger.notes = notes
-
-
-def add_notes_handler():
-    '''Add a loglevel "notes".'''
-    # add a separate handler for notes
-    handler = logging.FileHandler('skmsa.log')
-    handler.setLevel(logging.NOTES)
-    # set a very clean format
-    formatter = logging.Formatter('%(message)s')
-    handler.setFormatter(formatter)
-    logging.getLogger('').addHandler(handler)
-
-
-def get_version():
-    import os
-    import json
-    path_to_version = os.path.join(os.path.dirname(__file__), 'version.json')
-    with open(path_to_version, 'r') as f:
-        version_data = json.load(f)
-        try:
-            return version_data['version']
-        except KeyError:
-            # no version number in version.json
-            raise KeyError('check version file: no version number')
