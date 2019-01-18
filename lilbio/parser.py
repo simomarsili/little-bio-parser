@@ -5,13 +5,32 @@ import gopen
 logger = logging.getLogger(__name__)
 
 
-def parse(source, frmt):
+def parse(source, fmt):
+    """
+    Parse an alignment file into records.
+
+    Parameters
+    ----------
+    source : {str, file object}
+        Alignment filename of a file handle.
+    fmt : str
+        Format of the alignment file.
+        Valid values are: {'fasta', 'stockholm'}
+
+    Yields
+    ------
+    (index, title, seq) : tuple (int, str, str)
+        For each record, a tuple containing the index, the header
+        and the sequence of the record.
+
+    """
+
     from lilbio.bioparsers import bioparsers
 
     try:
-        bioparser = bioparsers[frmt]
+        bioparser = bioparsers[fmt]
     except KeyError:
-        raise ValueError('%s format is not supported' % frmt)
+        raise ValueError('%s format is not supported' % fmt)
 
     index = 0
     data = gopen.gread(source)
