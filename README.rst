@@ -1,7 +1,8 @@
 =================
 little-bio-parser
 =================
-Minimal parser for files of biological alignments (fasta or stockholm formats).
+A minimalistic parser for sequence alignments
+(fasta or stockholm formats).
 
 The parser returns a generator of the alignment records as
 (index, title, sequence) tuples, where:
