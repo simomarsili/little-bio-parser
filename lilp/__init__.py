@@ -7,10 +7,11 @@
 
 import time
 import logging
-from lilp.utils import get_version, config_loggers
+import pkg_resources
+from lilp.utils import config_loggers
 
 
-__version__ = get_version()
+__version__ = pkg_resources.require('gopen')[0].version
 __copyright__ = 'Copyright (C) 2017 Simone Marsili'
 __license__ = 'BSD 3 clause'
 __author__ = 'Simone Marsili (simo.marsili@gmail.com)'

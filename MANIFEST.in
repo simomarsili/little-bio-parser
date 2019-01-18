@@ -1,6 +1,6 @@
 include LICENSE.txt
 include README.md
-include lilp/version.json
+include version.json
 include requirements.txt
 
 # Include the data files

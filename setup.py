@@ -5,7 +5,7 @@ from setuptools import setup
 
 NAME = 'little-bio-parser'
 PACKAGES = ['lilp']
-VERSION_FILE = 'lilp/version.json'
+VERSION_FILE = 'version.json'
 SETUP_REQUIRES = []
 INSTALL_REQUIRES = [
     'gopen @ http://github.com/simomarsili/gopen/archive/v0.3.1.tar.gz']
