@@ -8,8 +8,8 @@
 import time
 import logging
 import pkg_resources
-from lilp.utils import config_loggers
-from lilp.parser import parse
+from lilbio.utils import config_loggers
+from lilbio.parser import parse
 
 
 project_name = 'little-bio-parser'

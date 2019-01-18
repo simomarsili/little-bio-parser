@@ -4,7 +4,7 @@ from setuptools import setup
 # from setuptools import find_packages
 
 NAME = 'little-bio-parser'
-PACKAGES = ['lilp']
+PACKAGES = ['lilbio']
 VERSION_FILE = 'version.json'
 SETUP_REQUIRES = []
 INSTALL_REQUIRES = [

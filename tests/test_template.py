@@ -21,7 +21,7 @@ def test_0():
 def test_fasta():
     import os
     from gopen import gread
-    from lilp.bioparsers import fasta_parser as parser
+    from lilbio.bioparsers import fasta_parser as parser
     fname = os.path.join(tests_dir(), '1.fa')
     a = [record for record in parser(gread(fname))]
     assert repr(a) == RECORDS
@@ -30,7 +30,7 @@ def test_fasta():
 def test_stockholm():
     import os
     from gopen import gread
-    from lilp.bioparsers import stockholm_parser as parser
+    from lilbio.bioparsers import stockholm_parser as parser
     fname = os.path.join(tests_dir(), '1.sto')
     a = [record for record in parser(gread(fname))]
     assert repr(a) == RECORDS

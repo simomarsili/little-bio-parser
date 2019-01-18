@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 
 def parse(source, frmt):
-    from lilp.bioparsers import bioparsers
+    from lilbio.bioparsers import bioparsers
 
     try:
         bioparser = bioparsers[frmt]
