@@ -16,10 +16,6 @@ def tests_dir():
             return tests_dir
 
 
-def test_0():
-    assert 1 == 1
-
-
 def test_fasta():
     fname = os.path.join(tests_dir(), '1.fa')
     a = list(lilbio.parse(fname, 'fasta'))
