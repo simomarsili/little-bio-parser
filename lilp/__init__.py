@@ -11,7 +11,8 @@ import pkg_resources
 from lilp.utils import config_loggers
 
 
-__version__ = pkg_resources.require('gopen')[0].version
+project_name = 'little-bio-parser'
+__version__ = pkg_resources.require(project_name)[0].version
 __copyright__ = 'Copyright (C) 2017 Simone Marsili'
 __license__ = 'BSD 3 clause'
 __author__ = 'Simone Marsili (simo.marsili@gmail.com)'
