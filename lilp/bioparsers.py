@@ -178,6 +178,8 @@ def stockholm_parser(fileo):
                 raise ValueError('Could not split line into identifier '
                                  'and sequence:\n' + line)
             title, seq = parts
+            # do not replace dots with gaps!
+            # seqs[id] += seq.replace(".", "-")
             yield (
                 title,
                 seq)
