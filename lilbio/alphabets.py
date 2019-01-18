@@ -120,7 +120,7 @@ def alphabet_guess(sequences):
 
     See also
     --------
-    lilp.alphabets._alphabet_score
+    lilbio.alphabets._alphabet_score
 
     """
     counts = _freqs(sequences)
