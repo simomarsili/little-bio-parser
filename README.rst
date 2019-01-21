@@ -4,12 +4,8 @@ little-bio-parser
 A minimalistic parser for sequence alignments
 (fasta or stockholm formats).
 
-The parser returns a generator of the alignment records as
-(index, title, sequence) tuples, where:
-
-- index is the index in the original alignment
-- title is the header line
-- and sequence is the record sequence (as a plain string)
+The parser returns an iterator over the alignment records as
+(index, title, sequence) tuples.
 
 Usage example::
 
