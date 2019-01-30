@@ -1,5 +1,4 @@
 """alignment parser"""
-import functools
 import logging
 import gopen
 

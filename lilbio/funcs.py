@@ -13,9 +13,9 @@ PROTEIN_ALPHABET = set('-ACDEFGHIKLMNPQRSTVWY')
 
 
 def compose(*funcs):
-    """Compose an iterable of functions.
+    """Composition of functions from iterable.
 
-    Functions operate in the list order:
+    Functions operate in iteration order:
     compose([a, b])(x) == b(a(x)).
     """
     def gf(f, g):
@@ -23,9 +23,13 @@ def compose(*funcs):
     return functools.reduce(gf, funcs, lambda x: x)
 
 
-def in_alphabet(a, alphabet):
+def is_alphabet_compliant(a, alphabet):
+    return all([c in alphabet for c in a])
+
+
+def only_from_alphabet(a, alphabet):
     return [c for c in a if c in alphabet]
 
 
-def hmm(a):
-    return in_alphabet(a, GENERIC_ALPHABET)
+def only_hmm(a):
+    return only_from_alphabet(a, GENERIC_ALPHABET)
