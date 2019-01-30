@@ -1,4 +1,5 @@
 """alignment parser"""
+import sys
 import logging
 import gopen
 
@@ -52,6 +53,12 @@ def parse(source, fmt, func=None):
     for title, seq in parsed_data:
         yield index, title, func(seq)
         index += 1
+
+
+def write(a, f=sys.stdout):
+    for r in a:
+        string_record = '>%s\n%s' % (r[1], r[2])
+        print(string_record, file=f)
 
 
 def main():
