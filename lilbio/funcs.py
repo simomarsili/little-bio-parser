@@ -23,13 +23,17 @@ def compose(*funcs):
     return functools.reduce(gf, funcs, lambda x: x)
 
 
-def is_alphabet_compliant(a, alphabet):
-    return all([c in alphabet for c in a])
+def is_alphabet_compliant(s, alphabet):
+    return all([c in alphabet for c in s])
 
 
-def only_from_alphabet(a, alphabet):
-    return [c for c in a if c in alphabet]
+def only_from_alphabet(s, alphabet):
+    return [c for c in s if c in alphabet]
 
 
-def only_hmm(a):
-    return only_from_alphabet(a, GENERIC_ALPHABET)
+def only_hmm(s):
+    return only_from_alphabet(s, GENERIC_ALPHABET)
+
+
+def tostr(s):
+    return ''.join(s)
