@@ -1,8 +1,24 @@
 """alignment parser"""
+import functools
 import logging
 import gopen
 
 logger = logging.getLogger(__name__)
+# uppercase plus *,- symbols
+GENERIC_ALPHABET = set('*-ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+# Canonical/natural codes plus gap symbol.
+PROTEIN_ALPHABET = set('-ACDEFGHIKLMNPQRSTVWY')
+
+
+def compose(*funcs):
+    """Compose an iterable of functions.
+
+    Functions operate in the list order:
+    compose([a, b])(x) == b(a(x)).
+    """
+    def gf(f, g):
+        return lambda x: g(f(x))
+    return functools.reduce(gf, funcs, lambda x: x)
 
 
 def parse(source, fmt, func=None):
@@ -16,8 +32,10 @@ def parse(source, fmt, func=None):
     fmt : str
         Format of the alignment file.
         Valid values are: {'fasta', 'stockholm'}
-    func : callable
+    func : callable or iterable
         When passed, apply to the sequence string.
+        If `func` is an iterable of functions, use the corresponding composite
+        function e.g. if func == [f, g]: func = lambda x: g(f(x)).
 
     Yields
     ------
@@ -25,7 +43,7 @@ def parse(source, fmt, func=None):
         For each record, a tuple containing index, header and sequence.
 
     """
-
+    from collections import Iterable
     from lilbio.bioparsers import bioparsers
 
     try:
@@ -36,7 +54,11 @@ def parse(source, fmt, func=None):
     if not func:
         def func(x):
             return x
-    elif not callable(func):
+
+    if isinstance(func, Iterable):
+        func = compose(*func)
+
+    if not callable(func):
         raise TypeError('%s object is not callable' % type(func))
 
     index = 0
