@@ -38,6 +38,7 @@ def parse(source, fmt, func=None):
         raise ValueError('%s format is not supported' % fmt)
 
     if not func:
+
         def func(x):
             return x
 
@@ -65,8 +66,7 @@ def main():
     import argparse
     parser_ = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser_.add_argument(
-        '-i', '--infile', type=str, help='Input file name')
+    parser_.add_argument('-i', '--infile', type=str, help='Input file name')
     parser_.add_argument(
         '-f', '--format', type=str, help='Input format', default='fasta')
     args = parser_.parse_args()

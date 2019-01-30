@@ -18,8 +18,10 @@ def compose(*funcs):
     Functions operate in iteration order:
     compose([a, b])(x) == b(a(x)).
     """
+
     def gf(f, g):
         return lambda x: g(f(x))
+
     return functools.reduce(gf, funcs, lambda x: x)
 
 

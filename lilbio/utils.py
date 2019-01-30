@@ -30,13 +30,13 @@ def is_command(cmds):
 def open_tempfile():
     import tempfile
     tempfile = tempfile.NamedTemporaryFile
-    kwargs = {'delete': True,
-              'mode': 'r+'}
+    kwargs = {'delete': True, 'mode': 'r+'}
     return tempfile(**kwargs)
 
 
 def timeit(func):
     """Timeit decorator."""
+
     @functools.wraps(func)
     def timed(*args, **kwargs):
         import time
@@ -45,6 +45,7 @@ def timeit(func):
         ts1 = time.time()
         logging.debug('%r: %2.4f secs', func, ts1 - ts0)
         return result
+
     return timed
 
 
@@ -57,5 +58,5 @@ def config_loggers():
         format='%(module)-10s %(funcName)-20s: %(levelname)-8s %(message)s',
         datefmt='%H:%M:%S',
         # level=logging.DEBUG)
-    level=logging.DEBUG)
+        level=logging.DEBUG)
     # add_notes_handler()
