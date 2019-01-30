@@ -5,7 +5,7 @@ import gopen
 logger = logging.getLogger(__name__)
 
 
-def parse(source, fmt):
+def parse(source, fmt, func=None):
     """
     Parse an alignment file into records.
 
@@ -16,12 +16,13 @@ def parse(source, fmt):
     fmt : str
         Format of the alignment file.
         Valid values are: {'fasta', 'stockholm'}
+    func : callable
+        When passed, apply to the sequence string.
 
     Yields
     ------
-    (index, title, seq) : tuple (int, str, str)
-        For each record, a tuple containing the index, the header
-        and the sequence of the record.
+    (index, header, seq) : tuple (int, str, str)
+        For each record, a tuple containing index, header and sequence.
 
     """
 
@@ -32,11 +33,17 @@ def parse(source, fmt):
     except KeyError:
         raise ValueError('%s format is not supported' % fmt)
 
+    if not func:
+        def func(x):
+            return x
+    elif not callable(func):
+        raise TypeError('%s object is not callable' % type(func))
+
     index = 0
     data = gopen.gread(source)
     parsed_data = bioparser(data)
     for title, seq in parsed_data:
-        yield index, title, seq
+        yield index, title, func(seq)
         index += 1
 
 
