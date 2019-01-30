@@ -20,22 +20,27 @@ def compose(*funcs):
     """
 
     def gf(f, g):
+        """Compose two functions."""
         return lambda x: g(f(x))
 
     return functools.reduce(gf, funcs, lambda x: x)
 
 
 def is_alphabet_compliant(s, alphabet):
-    return all([c in alphabet for c in s])
+    """True if all symbols are included in alphabet."""
+    return set(s) == set(alphabet)
 
 
 def only_from_alphabet(s, alphabet):
+    """Filter symbols from alphabet."""
     return [c for c in s if c in alphabet]
 
 
 def only_hmm(s):
+    """Filter uppercase + '-' symbols."""
     return only_from_alphabet(s, GENERIC_ALPHABET)
 
 
 def tostr(s):
+    """Return a str which is a concatenation of strings in s."""
     return ''.join(s)
