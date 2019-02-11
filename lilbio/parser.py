@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# Author: Simone Marsili <simomarsili@gmail.com>
+# License: BSD 3 clause
 """alignment parser"""
 import sys
 import logging
@@ -24,8 +27,8 @@ def parse(source, fmt, func=None):
 
     Yields
     ------
-    (index, header, seq) : tuple (int, str, str)
-        For each record, a tuple containing index, header and sequence.
+    (header, seq) : tuple (str, str)
+        For each record, a tuple containing header and sequence.
 
     """
     from collections import Iterable
@@ -48,12 +51,10 @@ def parse(source, fmt, func=None):
     if not callable(func):
         raise TypeError('%s object is not callable' % type(func))
 
-    index = 0
     data = gopen.gread(source)
     parsed_data = bioparser(data)
     for title, seq in parsed_data:
-        yield index, title, func(seq)
-        index += 1
+        yield title, func(seq)
 
 
 def write(a, f=sys.stdout):
@@ -74,8 +75,8 @@ def main():
     fmt = args.format
 
     parsed_records = parse(filename, fmt)
-    for index, title, seq in parsed_records:
-        print('%s %s\n%s' % (title, index, seq))
+    for title, seq in parsed_records:
+        print('%s\n%s' % (title, seq))
 
 
 if __name__ == '__main__':

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2019, Simone Marsili
-# All rights reserved.
+# Author: Simone Marsili <simomarsili@gmail.com>
 # License: BSD 3 clause
-# Author: Simone Marsili (simomarsili@gmail.com)
 """A little parser for alignments of biological sequences."""
 
 import time
