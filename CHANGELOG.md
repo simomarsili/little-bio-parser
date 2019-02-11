@@ -1,6 +1,8 @@
 # Change log
 
 ## [Unreleased]
+
+## [0.6] - 2019-02-11
 ### Changed
 - remove index from record tuple
 
