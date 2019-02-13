@@ -5,6 +5,7 @@
 import sys
 import logging
 import gopen
+import lilbio
 
 logger = logging.getLogger(__name__)
 
@@ -58,8 +59,9 @@ def parse(source, fmt, func=None):
 
 
 def write(a, f=sys.stdout):
+    tostr = lilbio.funcs.tostr
     for r in a:
-        string_record = '>%s\n%s' % (r[1], r[2])
+        string_record = '>%s\n%s' % (r[0], tostr(r[1]))
         print(string_record, file=f)
 
 
@@ -76,7 +78,7 @@ def main():
 
     parsed_records = parse(filename, fmt)
     for title, seq in parsed_records:
-        print('%s\n%s' % (title, seq))
+        print('>%s\n%s' % (title, seq))
 
 
 if __name__ == '__main__':
