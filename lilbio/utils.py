@@ -61,5 +61,5 @@ def config_loggers():
         format='%(module)-10s %(funcName)-20s: %(levelname)-8s %(message)s',
         datefmt='%H:%M:%S',
         # level=logging.DEBUG)
-        level=logging.WARNING)
+        level=logging.DEBUG)
     # add_notes_handler()
