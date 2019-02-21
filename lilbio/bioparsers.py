@@ -25,7 +25,9 @@
 # OR PERFORMANCE OF THIS SOFTWARE.
 
 """(Decorated) Biopython parsers."""
+import logging
 
+logger = logging.getLogger(__name__)
 __all__ = [
     'bioparsers',
     'fasta_parser',

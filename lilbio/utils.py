@@ -6,6 +6,8 @@
 import logging
 import functools
 
+logger = logging.getLogger(__name__)
+
 __all__ = [
     'is_command',
 ]
