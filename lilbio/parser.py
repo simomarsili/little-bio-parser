@@ -22,14 +22,15 @@ def parse(source, fmt, func=None):
         Format of the alignment file.
         Valid values are: {'fasta', 'stockholm'}
     func : callable or iterable
-        When passed, apply to the sequence string.
+        When passed, apply to the sequence string and return a string or a list
+        of one-letter codes.
         If `func` is an iterable of functions, use the corresponding composite
         function e.g. if func == [f, g]: func = lambda x: g(f(x)).
 
     Yields
     ------
-    (header, seq) : tuple (str, str)
-        For each record, a tuple containing header and sequence.
+    (identifier, seq) : tuple (str, str)
+        For each record, a tuple containing identifier and sequence.
 
     """
     from collections import Iterable
@@ -77,8 +78,8 @@ def main():
     fmt = args.format
 
     parsed_records = parse(filename, fmt)
-    for title, seq in parsed_records:
-        print('>%s\n%s' % (title, seq))
+    for identifier, seq in parsed_records:
+        print('>%s\n%s' % (identifier, seq))
 
 
 if __name__ == '__main__':
