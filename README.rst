@@ -5,7 +5,7 @@ A minimalistic parser for sequence alignments
 (fasta or stockholm formats).
 
 The parser returns an iterator over the alignment records as
-(header, sequence) tuples.
+(identifier, sequence) tuples.
 
 Usage example::
 
