@@ -1,6 +1,8 @@
 # Change log
 
 ## [Unreleased]
+### Changed
+- `funcs` module: rename `only_hmm` to `uppercase_only`
 
 ## [0.6] - 2019-02-11
 ### Changed
