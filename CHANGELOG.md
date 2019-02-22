@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.7] - 2019-02-22
+### Changed
+- `funcs` module: rename `only_hmm` to `uppercase_only`
+
 ## [0.6] - 2019-02-11
 ### Changed
 - remove index from record tuple

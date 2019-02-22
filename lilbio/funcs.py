@@ -29,21 +29,16 @@ def compose(*funcs):
     return functools.reduce(gf, funcs, lambda x: x)
 
 
-def is_alphabet_compliant(s, alphabet):
-    """True if all symbols are included in alphabet."""
-    return set(s) == set(alphabet)
-
-
-def only_from_alphabet(s, alphabet):
+def from_alphabet_only(s, alphabet):
     """Filter symbols from alphabet."""
     return [c for c in s if c in alphabet]
 
 
-def only_hmm(s):
+def uppercase_only(s):
     """Filter uppercase + '-' symbols."""
-    return only_from_alphabet(s, GENERIC_ALPHABET)
+    return from_alphabet_only(s, GENERIC_ALPHABET)
 
 
 def tostr(s):
-    """Return a str which is a concatenation of strings in s."""
+    """Stringify sequence s."""
     return ''.join(s)

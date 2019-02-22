@@ -10,6 +10,18 @@ import lilbio
 logger = logging.getLogger(__name__)
 
 
+class LilBioError(Exception):
+    """Base class for lilbio exceptions."""
+
+
+class UnsupportedFormatError(LilBioError):
+    """Unsupported format."""
+
+
+class NotCallableError(LilBioError):
+    """Argument func did not receive a callable object."""
+
+
 def parse(source, fmt, func=None):
     """
     Parse an alignment file into records.
@@ -40,7 +52,7 @@ def parse(source, fmt, func=None):
     try:
         bioparser = bioparsers[fmt]
     except KeyError:
-        raise ValueError('%s format is not supported' % fmt)
+        raise UnsupportedFormatError(fmt)
 
     if not func:
 
@@ -51,7 +63,7 @@ def parse(source, fmt, func=None):
         func = compose(*func)
 
     if not callable(func):
-        raise TypeError('%s object is not callable' % type(func))
+        raise NotCallableError(func)
 
     data = gopen.gread(source)
     parsed_data = bioparser(data)

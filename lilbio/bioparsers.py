@@ -23,9 +23,10 @@
 # OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
 # OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE
 # OR PERFORMANCE OF THIS SOFTWARE.
-
 """(Decorated) Biopython parsers."""
+import logging
 
+logger = logging.getLogger(__name__)
 __all__ = [
     'bioparsers',
     'fasta_parser',
@@ -127,9 +128,7 @@ def fasta_parser(fileo):
         # Remove trailing whitespace, and any internal spaces
         # (and any embedded \r which are possible in mangled files
         # when not opened in universal read lines mode)
-        yield (
-            title,
-            ''.join(lines).replace(' ', '').replace('\r', ''))
+        yield (title, ''.join(lines).replace(' ', '').replace('\r', ''))
 
         if not line:
             return  # StopIteration
@@ -180,8 +179,6 @@ def stockholm_parser(fileo):
             title, seq = parts
             # do not replace dots with gaps!
             # seqs[id] += seq.replace(".", "-")
-            yield (
-                title,
-                seq)
+            yield (title, seq)
 
     assert False, 'Should not reach this line'
