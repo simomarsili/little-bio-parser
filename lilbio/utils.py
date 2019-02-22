@@ -52,16 +52,3 @@ def timeit(func):
         return result
 
     return timed
-
-
-def config_loggers():
-    # set log messages
-    # add_loglevel_notes()
-    logging.basicConfig(
-        # filename=logname,
-        # filemode='a',
-        format='%(module)-10s %(funcName)-20s: %(levelname)-8s %(message)s',
-        datefmt='%H:%M:%S',
-        # level=logging.DEBUG)
-        level=logging.DEBUG)
-    # add_notes_handler()
