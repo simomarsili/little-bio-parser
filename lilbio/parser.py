@@ -2,9 +2,11 @@
 # Author: Simone Marsili <simomarsili@gmail.com>
 # License: BSD 3 clause
 """alignment parser"""
-import sys
 import logging
+import sys
+
 import gopen
+
 import lilbio
 
 logger = logging.getLogger(__name__)
@@ -54,9 +56,9 @@ def parse(source, fmt, func=None):
     except KeyError:
         raise UnsupportedFormatError(fmt)
 
-    if not func:
+    if func is None:
 
-        def func(x):
+        def func(x):  # pylint: disable=function-redefined
             return x
 
     if isinstance(func, Iterable):
@@ -72,6 +74,7 @@ def parse(source, fmt, func=None):
 
 
 def write(a, f=sys.stdout):
+    """Write as FASTA file."""
     tostr = lilbio.funcs.tostr
     for r in a:
         string_record = '>%s\n%s' % (r[0], tostr(r[1]))
@@ -79,12 +82,16 @@ def write(a, f=sys.stdout):
 
 
 def main():
+    """main."""
     import argparse
     parser_ = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter)
     parser_.add_argument('-i', '--infile', type=str, help='Input file name')
-    parser_.add_argument(
-        '-f', '--format', type=str, help='Input format', default='fasta')
+    parser_.add_argument('-f',
+                         '--format',
+                         type=str,
+                         help='Input format',
+                         default='fasta')
     args = parser_.parse_args()
     filename = args.infile
     fmt = args.format
