@@ -113,17 +113,11 @@ def fasta_parser(fileo):
         title = line[1:].rstrip()
         lines = []
         line = next(fileo, None)
-        while True:
-            if not line:
-                break
+        while line:
             if line[0] == '>':
                 break
             lines.append(line.rstrip())
-            try:
-                line = next(fileo)
-            except StopIteration:
-                line = False
-                break
+            line = next(fileo, None)
 
         # Remove trailing whitespace, and any internal spaces
         # (and any embedded \r which are possible in mangled files
