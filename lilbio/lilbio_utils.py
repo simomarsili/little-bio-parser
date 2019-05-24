@@ -3,8 +3,8 @@
 # License: BSD 3 clause
 """Utility functions."""
 
-import logging
 import functools
+import logging
 
 logger = logging.getLogger(__name__)
 
@@ -18,21 +18,21 @@ def is_command(cmds):
     Given a list of commands returns the first recoverable path, or None.
     """
     try:
-        from shutil import which as which  # python3 only
+        from shutil import which  # python3 only
     except ImportError:
         from distutils.spawn import find_executable as which
 
     if isinstance(cmds, str):
         return which(cmds)
-    else:
-        for cmd in cmds:
-            path = which(cmd)
-            if path is not None:
-                return path
-        return path
+    for cmd in cmds:
+        path = which(cmd)
+        if path is not None:
+            return path
+    return path
 
 
 def open_tempfile():
+    """Open a temp file."""
     import tempfile
     tempfile = tempfile.NamedTemporaryFile
     kwargs = {'delete': True, 'mode': 'r+'}
