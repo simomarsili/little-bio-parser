@@ -45,21 +45,21 @@ def bioparser(parsers, fmt=None):
         try:
             assert inspect.isgeneratorfunction(parser_func)
         except AssertionError:
-            raise TypeError("%r is not a valid parser generator function")
+            raise TypeError('%r is not a valid parser generator function')
         if fmt:
             fmt1 = str(fmt)
         else:
             fmt1 = parser_func.__name__
 
         def decorated_parser(source):
+            """Handle iterables, file-like and compressed files."""
             import collections
             import gopen
-            """Handle iterables, file-like and compressed files."""
             if isinstance(source, collections.Iterable):
                 for name, seq in parser_func(source):
                     yield name, seq
             else:
-                with gopen.gopen(source) as f:
+                with gopen.readable(source) as f:
                     for name, seq in parser_func(f):
                         yield name, seq
 
@@ -98,13 +98,13 @@ def fasta_parser(fileo):
     fileo = iter(fileo)
     # skip blank lines (only) till a record is found
     while True:
-        line = next(fileo)
-        if line == '':
+        line = next(fileo, None)
+        if not line:
             return  # Premature end of file, or just empty?
-        elif line[0] == '>':
+        if line[0] == '>':
             break
         elif line[0] != ';':
-            raise ValueError("Not Fasta format")
+            raise ValueError('Not Fasta format')
 
     while True:
         if line[0] != '>':
@@ -112,7 +112,7 @@ def fasta_parser(fileo):
                 'Records in Fasta files should start with ">" character')
         title = line[1:].rstrip()
         lines = []
-        line = next(fileo)
+        line = next(fileo, None)
         while True:
             if not line:
                 break
@@ -156,18 +156,18 @@ def stockholm_parser(fileo):
     # make sure that fileo is an iterator
     fileo = iter(fileo)
     while True:
-        line = next(fileo)
+        line = next(fileo, None)
         if not line:
             break  # end of file
         line = line.strip()  # remove trailing \n
         if line == '//':
             return  # end of alignment
-        elif line == '':
+        if line == '':
             # blank line, ignore
             pass
         elif line[0] != '#':
             if line[0] in ['>', ';']:
-                raise ValueError("Not Stockholm format")
+                raise ValueError('Not Stockholm format')
             # Sequence
             # Format: '<seqname> <sequence>'
             parts = [x.strip() for x in line.split(' ', 1)]
