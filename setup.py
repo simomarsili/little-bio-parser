@@ -12,7 +12,8 @@ VERSION_FILE = 'version.json'
 SETUP_REQUIRES = []
 INSTALL_REQUIRES = [
     # 'gopen @ http://github.com/simomarsili/gopen/archive/v0.3.1.tar.gz']
-    'gopen @ http://github.com/simomarsili/gopen/archive/master.tar.gz'
+    # 'gopen @ http://github.com/simomarsili/gopen/archive/master.tar.gz'
+    'gopen>=0.6'
 ]
 EXTRAS_REQUIRES = {'test': ['pytest']}
 
