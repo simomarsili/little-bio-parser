@@ -23,9 +23,9 @@ branches:
 
 deploy:
   provider: pypi
-  user: $TEST_PYPI_USER
+  user: simomarsili
   password: $TEST_PYPI_PASS
-  server: https://test.pypi.org/legacy/
+#  server: https://test.pypi.org/legacy/
   distributions: "sdist bdist_wheel"
   on:
     branch: master
