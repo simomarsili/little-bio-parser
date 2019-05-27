@@ -14,3 +14,11 @@ Usage example::
 
 Built over modified low-level parsers from Biopython
 (SimpleFastaParser function and StockholmIterator class).
+
+
+Changes
+=======
+0.8 (2019-05-27)
+----------------
+- Python3 only (>= 3.4)
+

@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.8] - 2019-05-27
+### Changed
+- Python3 only (>= 3.4)
+
+
 ## [0.7] - 2019-02-22
 ### Changed
 - `funcs` module: rename `only_hmm` to `uppercase_only`

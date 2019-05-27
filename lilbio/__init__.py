@@ -4,8 +4,9 @@
 """A little parser for alignments of biological sequences."""
 
 import pkg_resources
-from lilbio.parser import parse, write
+
 from lilbio.funcs import uppercase_only
+from lilbio.parser import parse, write
 
 project_name = 'little-bio-parser'
 __version__ = pkg_resources.require(project_name)[0].version
