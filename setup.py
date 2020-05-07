@@ -8,7 +8,7 @@ from setuptools import setup
 
 NAME = 'little-bio-parser'
 PACKAGES = ['lilbio']
-VERSION_FILE = 'version.json'
+PACKAGE_FILE = 'package.json'
 SETUP_REQUIRES = []
 INSTALL_REQUIRES = [
     # 'gopen @ http://github.com/simomarsili/gopen/archive/v0.3.1.tar.gz']
@@ -26,7 +26,7 @@ def get_version(source):
     try:
         return version_data['version']
     except KeyError:
-        # no version number in version.json
+        # no version number in package.json
         raise KeyError('check version file: no version number')
 
 
@@ -38,7 +38,7 @@ def get_long_description(here):
 
 
 HERE = path.abspath(path.dirname(__file__))
-VERSION = get_version(path.join(HERE, VERSION_FILE))
+VERSION = get_version(path.join(HERE, PACKAGE_FILE))
 LONG_DESCRIPTION = get_long_description(HERE)
 
 setup(
@@ -51,7 +51,9 @@ setup(
     url='https://github.com/simomarsili/' + NAME,
     packages=PACKAGES,
     # packages=find_packages(exclude=['tests']),
-    package_data={'': ['LICENSE.txt', 'README.rst', 'requirements.txt']},
+    package_data={
+        '': ['LICENSE.txt', 'README.rst', 'requirements.txt', 'package.json']
+    },
     include_package_data=True,
     setup_requires=SETUP_REQUIRES,
     install_requires=INSTALL_REQUIRES,
